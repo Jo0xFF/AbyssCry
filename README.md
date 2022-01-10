@@ -3,7 +3,7 @@ Service to download videos from a couple of social media websites,
 Website link: https://abysscry.herokuapp.com/
 
 # Support 
-For now it support youtube.
+For now it supports youtube.
 - Youtube
 
 # How to use
