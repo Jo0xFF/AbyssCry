@@ -1,0 +1,180 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="{% static 'website/css/general.css' %}">
+	<link rel="stylesheet" href="{% static 'website/css/style.css' %}">
+	<title>Abyss Crystall</title>
+</head>
+<body>
+	<!-- <img src="imgs/default-monochrome.svg" alt=""> -->
+
+	<main>
+		<section class="section-hero">
+			<header class="header">
+				<a href="/">
+					<img src="{% static 'website/imgs/3333.png' %}" alt="Abyss logo" class="logo">
+				</a>
+
+				<nav class="navigation">
+					<ul class="main-nav-list">
+						<li>
+							<a class="main-nav-link" href="#how">How it works</a>
+						</li>
+						<li>
+							<a class="main-nav-link" href="#features">Features</a>
+						</li>
+<!-- 						<li>
+							<a class="main-nav-link" href="#">Button 3</a>
+						</li> -->
+					</ul>
+				</nav>
+			</header>
+			<!-- <video src="{% static 'website/tokyo.mp4' %}" muted loop autoplay=""></video> -->
+			<div class="overlay"></div>
+			<div class="hero">
+				<div class="hero-text-box">
+					<h1 class="heading-primary center-text">A Single Service that brings many solutions <span>together</span></h1>
+					<p class="hero-description center-text">The Fast Way to download videos & Thumbnail from multiple social media sites in one place with one click.</p>
+				</div>
+				<div class="hero-search-box container">
+					<form action="#" class="search-form" method="post">
+						{% csrf_token %}
+						<input type="text" placeholder="Paste your link here" name="social_url" required>
+						<ion-icon class="search-icon" name="search-outline"></ion-icon>
+						<button class="btn">Download</button>
+					</form>
+				</div>
+				<div class="section-download container grid grid--3--cols">
+					<div class="section-thumbnail">
+						{% if thumbnail_url %}
+						<img class="thumb-pic" src="{{thumbnail_url}}">
+						<a class="btn" name="download_media" href="{{thumbnail_url}}" target="_blank" download>Download thumbnail</a>
+
+						{% else %}
+						<img class="thumb-pic" src="https://picsum.photos/id/1002/200/300">
+						<a class="btn" name="download_media" href="https://picsum.photos/id/1002/200/300" target="_blank" download>Download thumbnail</a>
+						{% endif %}
+
+					</div>
+					<div class="section-quality">
+						<p class="quality-heading">Here's vod</p>
+						<form action="#" method="post">
+							{% csrf_token %}
+							<button class="btn">
+								 Download
+							</button>
+						</form>
+					</div>
+					<div class="section-audio">
+						<p class="quality-heading">Here's Audio Qualities</p>
+						<a class="btn" href="{{low_q}}" target="_blank">Low</a>
+						<a class="btn" href="{{med_q}}" target="_blank">Medium</a>
+					</div>
+				</div>
+			</div>
+
+
+		</section>
+
+		<!-- HOW IT WORKS SECTION -->
+		<section class="section-how" id="how">
+			<div class="container">
+				<p class="subheading">How it works</p>
+				<h2 class="heading-secondary">Download content with 2 simple steps</h2>
+			</div>
+
+			<div class="container grid grid--2--cols">
+				<!-- The First Step -->
+				<div class="step-text-box">
+					<p class="step-number">01</p>
+					<h3 class="heading-tertiary">Choose media content</h3>
+					<p class="step-description">Get the link of your desired content to download from the social media sites you want!</p>
+				</div>
+				<div class="step-img-box">
+					<img src="{% static 'website/imgs/Z_pattern/Social_media.svg' %}" alt="People Surfing the Social Media sites" class="step-img">
+				</div>
+
+				<!-- The Second Step -->
+				<div class="step-img-box">
+					<img src="{% static 'website/imgs/Z_pattern/done.svg' %}" alt="Person downloading desired content from social media" class="step-img">
+				</div>
+				<div class="step-text-box">
+					<p class="step-number">02</p>
+					<h3 class="heading-tertiary">Get your content</h3>
+					<p class="step-description">Paste the link you want to start downloading in our service box to get your high quality video/audio.</p>
+				</div>
+
+			</div>
+		</section>
+
+		<!-- FEATURES SECTION -->
+		<section class="section-features" id="features">
+			<div class="container">
+				<p class="subheading margin-bottom-sm">Features</p>
+				<h2 class="heading-secondary">Download media fast without wasting time</h2>
+			</div>
+
+			<div class="container grid grid--3--cols">
+				<div class="feature">
+					<ion-icon class="feature-icon" name="lock-closed-outline"></ion-icon>
+					<p class="feature-title">100% safe and secure</p>
+					<p class="feature-text">No Malware Nor Data saved, due to the great responsbility we hold to our users who trusted us with their data.</p>
+				</div>
+				<div class="feature">
+					<ion-icon class="feature-icon" name="cash-outline"></ion-icon>
+					<p class="feature-title">Free to use</p>
+					<p class="feature-text">No subscription to downlaod those videos or noisy ads that pop-up in your screen.</p>
+				</div>
+				<div class="feature">
+					<ion-icon class="feature-icon" name="rocket-outline"></ion-icon>
+					<p class="feature-title">Save time</p>
+					<p class="feature-text">you want to convert videos? we provided a converter for most used video/audio formats.</p>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<!-- FOOTER SECTION -->
+	<footer class="footer">
+		<div class="container grid grid--3--cols grid--center-v">
+			<div class="copyright-box">
+				<p class="copyright">Copyright &copy; 2022 Abyss, Inc. All rights reserved.</p>
+			</div>
+			<div class="logo-col">
+				<a href="#" class="footer-logo">
+					<img src="{% static 'website/imgs/3333.png' %}" alt="Abyss logo" class="logo">
+				</a>
+			</div>
+
+			<ul class="social-links">
+				<li>
+					<a href="#" class="footer-link">
+						<ion-icon class="social-icon" name="logo-twitter"></ion-icon>
+					</a>
+				</li>
+				<li>
+					<a href="https://github.com/Jo0xFF" class="footer-link" target="_blank">
+						<ion-icon class="social-icon" name="logo-github"></ion-icon>
+					</a>
+				</li>
+				<li>
+					<a href="#" class="footer-link">
+						<ion-icon class="social-icon" name="logo-linkedin"></ion-icon>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</footer>
+
+	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
